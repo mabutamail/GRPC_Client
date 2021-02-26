@@ -1,0 +1,20 @@
+syntax = "proto3";
+package org.zalex.grpc;
+
+//запрос клиента к серверу
+message HelloRequest {
+string name = 1;
+//список
+repeated string hobbies = 2;
+
+}
+
+//запрос сервера к клиенту
+message HelloResponse {
+string greeting = 1;
+}
+
+//метод который будет вызываться (любое количество rpc методов)
+service GreetingService {
+rpc greeting(HelloRequest) returns (stream HelloResponse);
+}
